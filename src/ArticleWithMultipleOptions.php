@@ -51,8 +51,8 @@ class ArticleWithMultipleOptions extends Article
 
     private function ensureMaximumNumberOfOptionsIsNotExceeded()
     {
-        if (count($this->options) == 2) {
-            // @todo
+        if (count($this->options) === 3) {
+            throw new \InvalidArgumentException('Maximum of three options exceeded');
         }
     }
 }

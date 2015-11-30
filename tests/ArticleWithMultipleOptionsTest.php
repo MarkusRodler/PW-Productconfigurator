@@ -74,13 +74,74 @@ class ArticleWithMultipleOptionsTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($basePrice->addTo($optionPrice1)->addTo($optionPrice2)->equals($article->getTotalPrice()));
     }
 
+    public function testTotalPriceWithThreeOptionsCanBeRetrieved()
+    {
+        $name = new ArticleName('Test Article');
+
+        $optionPrice1 = $this->createMoney();
+        $optionPrice2 = $this->createMoney();
+        $optionPrice3 = $this->createMoney();
+        $basePrice = $this->createMoney();
+
+        $option1 = $this->createOption();
+        $option1->method('getPrice')->willReturn($optionPrice1);
+
+        $option2 = $this->createOption();
+        $option2->method('getPrice')->willReturn($optionPrice2);
+
+        $option3= $this->createOption();
+        $option3->method('getPrice')->willReturn($optionPrice3);
+
+        $article = new ArticleWithMultipleOptions($name, $basePrice, $option1);
+        $article->addOption($option2);
+        $article->addOption($option3);
+
+        $this->assertTrue(
+            $basePrice->addTo($optionPrice1)
+                      ->addTo($optionPrice2)
+                      ->addTo($optionPrice3)
+                      ->equals($article->getTotalPrice())
+        );
+    }
+
+    /**
+     * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage Maximum of three options exceeded
+     */
+    public function testFourthOptionsCanNotBeAdded()
+    {
+        $name = new ArticleName('Test Article');
+
+        $optionPrice1 = $this->createMoney();
+        $optionPrice2 = $this->createMoney();
+        $optionPrice3 = $this->createMoney();
+        $basePrice = $this->createMoney();
+
+        $option1 = $this->createOption();
+        $option1->method('getPrice')->willReturn($optionPrice1);
+
+        $option2 = $this->createOption();
+        $option2->method('getPrice')->willReturn($optionPrice2);
+
+        $option3 = $this->createOption();
+        $option3->method('getPrice')->willReturn($optionPrice3);
+
+        $option4 = $this->createOption();
+        $option4->method('getPrice')->willReturn($optionPrice3);
+
+        $article = new ArticleWithMultipleOptions($name, $basePrice, $option1);
+        $article->addOption($option2);
+        $article->addOption($option3);
+        $article->addOption($option4);
+    }
+
     /**
      * @return PHPUnit_Framework_MockObject_MockObject|Option
      */
     private function createOption()
     {
         return $this->getMockBuilder(Option::class)
-                       ->disableOriginalConstructor()
-                       ->getMock();
+                    ->disableOriginalConstructor()
+                    ->getMock();
     }
 }
