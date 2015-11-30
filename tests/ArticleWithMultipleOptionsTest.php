@@ -6,6 +6,7 @@ namespace Dark\PW\Productconfigurator;
 /**
  * @covers \Dark\PW\Productconfigurator\ArticleWithMultipleOptions
  * @covers \Dark\PW\Productconfigurator\Article
+ * @uses \Dark\PW\Productconfigurator\ArticleName
  * @uses \Dark\PW\Productconfigurator\Money
  * @uses \Dark\PW\Productconfigurator\Currency
  */
@@ -15,8 +16,11 @@ class ArticleWithMultipleOptionsTest extends \PHPUnit_Framework_TestCase
 
     public function testBasePriceCanBeRetrieved()
     {
+        $name = new ArticleName('Test Article');
+
         $price = $this->createMoney();
-        $article = new ArticleWithMultipleOptions($price, $this->createOption());
+
+        $article = new ArticleWithMultipleOptions($name, $price, $this->createOption());
 
         $this->assertTrue($price->equals($article->basePrice()));
     }
@@ -37,19 +41,23 @@ class ArticleWithMultipleOptionsTest extends \PHPUnit_Framework_TestCase
 
     public function testTotalPriceWithOneOptionCanBeRetrieved()
     {
+        $name = new ArticleName('Test Article');
+
         $optionPrice = $this->createMoney();
         $basePrice = $this->createMoney();
 
         $option = $this->createOption();
         $option->method('price')->willReturn($optionPrice);
 
-        $article = new ArticleWithMultipleOptions($basePrice, $option);
+        $article = new ArticleWithMultipleOptions($name, $basePrice, $option);
 
         $this->assertTrue($basePrice->addTo($optionPrice)->equals($article->totalPrice()));
     }
 
     public function testTotalPriceWithTwoOptionsCanBeRetrieved()
     {
+        $name = new ArticleName('Test Article');
+
         $optionPrice1 = $this->createMoney();
         $optionPrice2 = $this->createMoney();
         $basePrice = $this->createMoney();
@@ -60,7 +68,7 @@ class ArticleWithMultipleOptionsTest extends \PHPUnit_Framework_TestCase
         $option2 = $this->createOption();
         $option2->method('price')->willReturn($optionPrice2);
 
-        $article = new ArticleWithMultipleOptions($basePrice, $option1);
+        $article = new ArticleWithMultipleOptions($name, $basePrice, $option1);
         $article->addOption($option2);
 
         $this->assertTrue($basePrice->addTo($optionPrice1)->addTo($optionPrice2)->equals($article->totalPrice()));
