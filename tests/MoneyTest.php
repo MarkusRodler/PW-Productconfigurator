@@ -74,4 +74,3 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($eur->equals($usd));
     }
 }
-

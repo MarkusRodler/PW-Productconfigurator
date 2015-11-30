@@ -16,4 +16,3 @@ trait CreateUsdTrait
         return $usd;
     }
 }
-
