@@ -16,7 +16,7 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
     {
         $money = new Money(1, new Currency('EUR'));
 
-        $this->assertEquals(1, $money->amount());
+        $this->assertEquals(1, $money->getAmount());
     }
 
     public function testCanAddSameCurrencies()
@@ -24,7 +24,7 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
         $money1 = new Money(1, new Currency('EUR'));
         $money2 = new Money(2, new Currency('EUR'));
 
-        $this->assertEquals(3, $money1->addTo($money2)->amount());
+        $this->assertEquals(3, $money1->addTo($money2)->getAmount());
     }
 
     /**

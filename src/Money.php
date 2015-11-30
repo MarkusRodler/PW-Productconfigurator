@@ -26,12 +26,12 @@ class Money
         $this->ensureCurrenciesMatch($this->currency, $money->currency());
 
         return new Money(
-            $this->amount + $money->amount(),
+            $this->amount + $money->getAmount(),
             $this->currency
         );
     }
 
-    public function amount() : int
+    public function getAmount() : int
     {
         return $this->amount;
     }
@@ -44,7 +44,7 @@ class Money
     public function equals(Money $money) : bool
     {
         return $this->currency->equals($money->currency()) &&
-               $this->amount === $money->amount();
+               $this->amount === $money->getAmount();
     }
 
     private function ensureCurrenciesMatch(Currency $myCurrency, Currency $yourCurrency)
