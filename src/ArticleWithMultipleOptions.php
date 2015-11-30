@@ -27,7 +27,7 @@ class ArticleWithMultipleOptions extends Article
      */
     public function totalPrice() : Money
     {
-        $price = $this->basePrice();
+        $price = $this->getBasePrice();
 
         foreach ($this->options as $option) {
             $price = $price->addTo($option->price());

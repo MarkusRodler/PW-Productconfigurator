@@ -22,7 +22,7 @@ class ArticleWithOneOptionTest extends \PHPUnit_Framework_TestCase
 
         $article = new ArticleWithOneOption($name, $price);
 
-        $this->assertTrue($price->equals($article->basePrice()));
+        $this->assertTrue($price->equals($article->getBasePrice()));
     }
 
     public function testOptionCanBeSet()

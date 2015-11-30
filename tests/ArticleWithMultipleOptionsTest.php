@@ -22,7 +22,7 @@ class ArticleWithMultipleOptionsTest extends \PHPUnit_Framework_TestCase
 
         $article = new ArticleWithMultipleOptions($name, $price, $this->createOption());
 
-        $this->assertTrue($price->equals($article->basePrice()));
+        $this->assertTrue($price->equals($article->getBasePrice()));
     }
 
     /*

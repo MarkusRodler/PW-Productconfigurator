@@ -28,7 +28,7 @@ abstract class Article
     /**
      * @return Money
      */
-    public function basePrice() : Money
+    public function getBasePrice() : Money
     {
         return $this->basePrice;
     }
