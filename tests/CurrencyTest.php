@@ -30,7 +30,7 @@ class CurrencyTest extends \PHPUnit_Framework_TestCase
 
         $object = new Currency($currency);
 
-        $this->assertEquals($currency, $object->currency());
+        $this->assertEquals($currency, $object->getCurrency());
     }
 
     public function testCanCompareSameCurrencies()

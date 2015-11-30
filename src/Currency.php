@@ -28,7 +28,7 @@ class Currency
     /**
      * @return string
      */
-    public function currency() : string
+    public function getCurrency() : string
     {
         return $this->currency;
     }
@@ -40,7 +40,7 @@ class Currency
      */
     public function equals(Currency $currency) : bool
     {
-        return $this->currency === $currency->currency();
+        return $this->currency === $currency->getCurrency();
     }
 
     /**

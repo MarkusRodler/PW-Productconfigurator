@@ -23,7 +23,7 @@ class Money
 
     public function addTo(Money $money)
     {
-        $this->ensureCurrenciesMatch($this->currency, $money->currency());
+        $this->ensureCurrenciesMatch($this->currency, $money->getCurrency());
 
         return new Money(
             $this->amount + $money->getAmount(),
@@ -36,14 +36,14 @@ class Money
         return $this->amount;
     }
 
-    public function currency() : Currency
+    public function getCurrency() : Currency
     {
         return $this->currency;
     }
 
     public function equals(Money $money) : bool
     {
-        return $this->currency->equals($money->currency()) &&
+        return $this->currency->equals($money->getCurrency()) &&
                $this->amount === $money->getAmount();
     }
 
