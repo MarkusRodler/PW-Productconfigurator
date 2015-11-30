@@ -35,8 +35,8 @@ Dabei gelten die folgenden Geschäftsregeln:
 
  ```bash
 # get the code
-git clone https://github.com/MarkusRodler/PW-Blog.git
-cd PW-Blog
+git clone https://github.com/MarkusRodler/PW-Productconfigurator.git
+cd PW-Productconfigurator
 
 # install dependencies using composer (if installed globally)
 composer install
