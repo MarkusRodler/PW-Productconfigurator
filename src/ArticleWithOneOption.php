@@ -31,6 +31,6 @@ class ArticleWithOneOption extends Article
      */
     public function getTotalPrice() : Money
     {
-        return $this->getBasePrice()->addTo($this->option->price());
+        return $this->getBasePrice()->addTo($this->option->getPrice());
     }
 }

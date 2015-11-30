@@ -18,6 +18,6 @@ class OptionTest extends \PHPUnit_Framework_TestCase
 
         $option = new Option($price);
 
-        $this->assertTrue($price->equals($option->price()));
+        $this->assertTrue($price->equals($option->getPrice()));
     }
 }

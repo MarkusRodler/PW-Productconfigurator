@@ -30,7 +30,7 @@ class ArticleWithMultipleOptions extends Article
         $price = $this->getBasePrice();
 
         foreach ($this->options as $option) {
-            $price = $price->addTo($option->price());
+            $price = $price->addTo($option->getPrice());
         }
 
         return $price;

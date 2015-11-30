@@ -47,7 +47,7 @@ class ArticleWithOneOptionTest extends \PHPUnit_Framework_TestCase
         $basePrice = $this->createMoney();
 
         $option = $this->createOption();
-        $option->method('price')->willReturn($optionPrice);
+        $option->method('getPrice')->willReturn($optionPrice);
 
         $article = new ArticleWithOneOption($name, $basePrice);
         $article->setOption($option);

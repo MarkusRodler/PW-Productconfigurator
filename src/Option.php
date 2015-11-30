@@ -21,7 +21,7 @@ class Option
     /**
      * @return Money
      */
-    public function price() : Money
+    public function getPrice() : Money
     {
         return $this->price;
     }

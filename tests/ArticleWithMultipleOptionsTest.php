@@ -47,7 +47,7 @@ class ArticleWithMultipleOptionsTest extends \PHPUnit_Framework_TestCase
         $basePrice = $this->createMoney();
 
         $option = $this->createOption();
-        $option->method('price')->willReturn($optionPrice);
+        $option->method('getPrice')->willReturn($optionPrice);
 
         $article = new ArticleWithMultipleOptions($name, $basePrice, $option);
 
@@ -63,10 +63,10 @@ class ArticleWithMultipleOptionsTest extends \PHPUnit_Framework_TestCase
         $basePrice = $this->createMoney();
 
         $option1 = $this->createOption();
-        $option1->method('price')->willReturn($optionPrice1);
+        $option1->method('getPrice')->willReturn($optionPrice1);
 
         $option2 = $this->createOption();
-        $option2->method('price')->willReturn($optionPrice2);
+        $option2->method('getPrice')->willReturn($optionPrice2);
 
         $article = new ArticleWithMultipleOptions($name, $basePrice, $option1);
         $article->addOption($option2);
