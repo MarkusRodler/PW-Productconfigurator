@@ -25,7 +25,7 @@ class ArticleWithMultipleOptions extends Article
     /**
      * @return Money
      */
-    public function totalPrice() : Money
+    public function getTotalPrice() : Money
     {
         $price = $this->getBasePrice();
 

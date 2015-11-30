@@ -52,7 +52,7 @@ class ArticleWithOneOptionTest extends \PHPUnit_Framework_TestCase
         $article = new ArticleWithOneOption($name, $basePrice);
         $article->setOption($option);
 
-        $this->assertTrue($basePrice->addTo($optionPrice)->equals($article->totalPrice()));
+        $this->assertTrue($basePrice->addTo($optionPrice)->equals($article->getTotalPrice()));
     }
 
     /**

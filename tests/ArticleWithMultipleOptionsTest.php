@@ -51,7 +51,7 @@ class ArticleWithMultipleOptionsTest extends \PHPUnit_Framework_TestCase
 
         $article = new ArticleWithMultipleOptions($name, $basePrice, $option);
 
-        $this->assertTrue($basePrice->addTo($optionPrice)->equals($article->totalPrice()));
+        $this->assertTrue($basePrice->addTo($optionPrice)->equals($article->getTotalPrice()));
     }
 
     public function testTotalPriceWithTwoOptionsCanBeRetrieved()
@@ -71,7 +71,7 @@ class ArticleWithMultipleOptionsTest extends \PHPUnit_Framework_TestCase
         $article = new ArticleWithMultipleOptions($name, $basePrice, $option1);
         $article->addOption($option2);
 
-        $this->assertTrue($basePrice->addTo($optionPrice1)->addTo($optionPrice2)->equals($article->totalPrice()));
+        $this->assertTrue($basePrice->addTo($optionPrice1)->addTo($optionPrice2)->equals($article->getTotalPrice()));
     }
 
     /**

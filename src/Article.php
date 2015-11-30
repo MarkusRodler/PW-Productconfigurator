@@ -36,5 +36,5 @@ abstract class Article
     /**
      * @return Money
      */
-    abstract public function totalPrice() : Money;
+    abstract public function getTotalPrice() : Money;
 }

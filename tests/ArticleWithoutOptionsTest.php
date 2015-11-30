@@ -20,6 +20,6 @@ class ArticleWithoutOptionsTest extends \PHPUnit_Framework_TestCase
 
         $article = new ArticleWithoutOptions($name, $price);
 
-        $this->assertSame($price, $article->totalPrice());
+        $this->assertSame($price, $article->getTotalPrice());
     }
 }

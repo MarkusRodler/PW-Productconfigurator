@@ -5,7 +5,7 @@ namespace Dark\PW\Productconfigurator;
 
 class ArticleWithoutOptions extends Article
 {
-    public function totalPrice() : Money
+    public function getTotalPrice() : Money
     {
         return $this->getBasePrice();
     }
